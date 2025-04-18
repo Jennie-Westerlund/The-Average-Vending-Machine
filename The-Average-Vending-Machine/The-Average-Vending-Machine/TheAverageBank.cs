@@ -27,6 +27,6 @@ public class TheAverageBank
 
     public bool IsBroke()
     {
-        //function to determine broke-status
+        return _currentUser?.WalletAmount <= 0;
     }
 }
