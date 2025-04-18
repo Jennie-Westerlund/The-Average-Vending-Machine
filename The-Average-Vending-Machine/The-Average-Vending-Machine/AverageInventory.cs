@@ -44,10 +44,20 @@ public class AverageInventory
     public Product? GetProductByPlacement(string placement)
     {
         //get the product the user wanted to by?
+        return Products.FirstOrDefault(product => product.Placement());
     }
 
     public bool PurchaseProduct(string placement)
     {
         //logic for uppdating inventory when user buys product
+        var product = GetProductByPlacement(placement);
+        
+        if (product == null || product.Quantity <= 0)
+        {
+            return false;
+        }
+        
+        product.Quantity--;
+        return true;
     }
 }
