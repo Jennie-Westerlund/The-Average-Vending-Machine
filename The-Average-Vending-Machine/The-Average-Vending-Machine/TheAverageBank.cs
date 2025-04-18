@@ -11,7 +11,7 @@ public class TheAverageBank
 
     public decimal GetWalletAmount()
     {
-        //wallet amount from user input
+        return _currentUser?.WalletAmount ?? 0;
     }
 
     public bool ProcessPayment(decimal amount)
