@@ -16,7 +16,13 @@ public class TheAverageBank
 
     public bool ProcessPayment(decimal amount)
     {
-        //fuction to uppdate amount in wallet
+        if (_currentUser == null || !_currentUser.CanAfford(amount))
+        {
+            return false;
+        }
+
+        _currentUser.DeductMoney(amount);
+        return true;
     }
 
     public bool IsBroke()
