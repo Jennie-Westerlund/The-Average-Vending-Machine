@@ -27,7 +27,18 @@ public class AverageInventory
 
     public void DisplayInventory()
     {
-        //code for showing current products in inventory
+        Console.WriteLine("====== AVAILABLE PRODUCTS ======");
+        Console.WriteLine("Placement | Product Name | Price | Quantity");
+        Console.WriteLine("--------------------------------------");
+        
+        foreach (var product in Products)
+        {
+            if (product.Quantity > 0)
+            {
+                Console.WriteLine($"{product.Placement} | {product.Name} | ${product.Price:F2} | {product.Quantity} left");
+            }
+        }
+        Console.WriteLine("==============================");
     }
 
     public Product? GetProductByPlacement(string placement)
