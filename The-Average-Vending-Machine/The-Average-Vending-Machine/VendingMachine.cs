@@ -154,17 +154,17 @@ public class VendingMachine
             return;
         }
 
-        
+       
         if (_random.Next(1, 11) == 1)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Oops... looks like {product.Name} got stuck. Do you want to slap the average vending machine?");
-            Console.WriteLine("Yes or No?");
             Console.ResetColor();
             
+            Console.Write("Yes or No? ");
             var response = Console.ReadLine()?.Trim().ToLower() ?? "";
             
-            if (response == "Yes")
+            if (response == "y" || response == "yes")
             {
                 if (_random.Next(1, 3) == 1)
                 {
@@ -185,12 +185,18 @@ public class VendingMachine
                     Console.WriteLine($"You have ${_currentUser.WalletAmount:F2} left in your wallet.");
                     Console.ResetColor();
                 }
+                
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("You decided not to slap the machine. Wise choice, perhaps...");
                 Console.ResetColor();
+                
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
         else
@@ -200,8 +206,10 @@ public class VendingMachine
             
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"You purchased {product.Name} for ${product.Price:F2}");
-            Console.WriteLine($"You have ${_currentUser.WalletAmount:F2} left in your wallet.");
             Console.ResetColor();
+            
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
         
         DisplayMenu();
